@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import './globals.css';
@@ -26,7 +27,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headersList = await headers();
+  const pathname = headersList.get('x-next-pathname') || '';
+  const isStudio = pathname.startsWith('/studio');
+
+  if (isStudio) {
+    return (
+      <html lang="en">
+        <body style={{ margin: 0 }}>{children}</body>
+      </html>
+    );
+  }
+
   return (
     <html lang="en">
       <head>
