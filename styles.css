@@ -80,6 +80,17 @@
   --btn-subscribe-text: #F6F8FB;
 }
 
+/* --- Text Selection Highlight --- */
+::selection {
+  background-color: var(--bg-blue);
+  color: var(--text-dark);
+}
+
+::-moz-selection {
+  background-color: var(--bg-blue);
+  color: var(--text-dark);
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
