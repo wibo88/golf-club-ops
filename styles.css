@@ -11,48 +11,12 @@
 
 /* --- CSS Custom Properties --- */
 :root {
-  /* Backgrounds */
-  --bg-primary: #0F0E0E;
-  --bg-secondary: #1F1F1F;
-  --bg-white: #FFFFFF;
-  --bg-accent: #FF5700;
-  --bg-green: #32CE57;
-  --bg-blue: #A3CAFF;
-
-  /* Text */
-  --text-headline: #F6F8FB;
-  --text-body: #F6F8FB;
-  --text-secondary: #D1D2D8;
-  --text-muted: #8C8D92;
-  --text-dark: #0F0E0E;
-
-  /* Dividers */
-  --divider: #555659;
-  --divider-light: #E9E9E9;
-
-}
-
-.light-mode {
-  /* Backgrounds */
-  --bg-primary: #F0F0EB; /* Warm light grey */
-  --bg-secondary: #E5E5E0; /* Slightly darker warm grey */
-  
-  /* Text */
-  --text-headline: #2A2A2A; /* Charcoal */
-  --text-body: #2A2A2A;
-  --text-secondary: #4A4A4A;
-  --text-muted: #666666;
-  --text-dark: #0F0E0E; /* Keep pure black for specific contrasts */
-
-  /* Dividers */
-  --divider: #CCCCCC;
-
-  /* Fonts */
+  /* Fonts - Common */
   --font-display: 'Tilt Warp', sans-serif;
   --font-serif: 'Instrument Serif', serif;
   --font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Spacing */
+  /* Spacing - Common */
   --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 24px;
@@ -60,7 +24,59 @@
   --space-xl: 64px;
   --space-2xl: 100px;
   --space-3xl: 140px;
+  
+  /* Layout - Common */
+  --max-width: 1400px;
+  --max-reading: 800px;
 
+  /* Backgrounds - Default (Dark) */
+  --bg-primary: #0F0E0E;
+  --bg-secondary: #1F1F1F;
+  --bg-white: #FFFFFF;
+  --bg-accent: #FF5700;
+  --bg-green: #32CE57;
+  --bg-blue: #A3CAFF;
+  --bg-card: #1F1F1F;
+
+  /* Text - Default (Dark) */
+  --text-headline: #F6F8FB;
+  --text-body: #F6F8FB;
+  --text-secondary: #D1D2D8;
+  --text-muted: #8C8D92;
+  --text-dark: #0F0E0E;
+  --text-inverse: #0F0E0E;
+
+  /* Dividers - Default (Dark) */
+  --divider: #555659;
+  --divider-light: #E9E9E9;
+  
+  /* Components */
+  --nav-bg: rgba(15, 14, 14, 0.9);
+  --btn-subscribe-text: #F6F8FB;
+}
+
+.light-mode {
+  /* Backgrounds - Light */
+  --bg-primary: #F0F0EB; /* Warm light grey */
+  --bg-secondary: #E5E5E0; /* Slightly darker warm grey */
+  --bg-card: #FFFFFF;
+  --bg-white: #FFFFFF;
+
+  /* Text - Light */
+  --text-headline: #2A2A2A; /* Charcoal */
+  --text-body: #2A2A2A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #666666;
+  /* --text-dark stays dark for contrast elements */
+  --text-inverse: #F6F8FB;
+
+  /* Dividers - Light */
+  --divider: #CCCCCC;
+  --divider-light: #D0D0D0;
+  
+  /* Components */
+  --nav-bg: rgba(240, 240, 235, 0.9);
+  --btn-subscribe-text: #F6F8FB;
 }
 
 /* --- Reset & Base --- */
@@ -84,11 +100,13 @@ body {
   letter-spacing: -0.4px;
   color: var(--text-body);
   background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 img {
@@ -104,6 +122,7 @@ img {
   line-height: 0.85;
   letter-spacing: -4px;
   color: var(--text-headline);
+  transition: color 0.3s ease;
 }
 
 .h2 {
@@ -196,6 +215,8 @@ img {
   padding: 10px 20px;
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+  z-index: 100;
 }
 
 .nav__logo {
@@ -210,6 +231,7 @@ img {
   display: flex;
   gap: 8px;
   list-style: none;
+  align-items: center;
 }
 
 .nav__link {
@@ -221,7 +243,7 @@ img {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.4px;
-  color: var(--text-dark);
+  color: var(--text-dark); /* Always dark because buttons have fixed colors */
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
@@ -243,6 +265,8 @@ img {
   font-size: 20px;
   transition: all 0.2s ease;
   margin-left: 8px;
+  width: 46px; /* Fixed width to prevent layout shift */
+  height: 46px;
 }
 
 .nav__toggle:hover {
@@ -337,11 +361,12 @@ img {
 
 .hero__headline {
   margin-bottom: var(--space-lg);
+  color: #F6F8FB; /* Force white headline on hero image regardless of theme */
 }
 
 .hero__sub {
   font-size: 20px;
-  color: var(--text-secondary);
+  color: #D1D2D8; /* Force light grey subtext on hero image */
   max-width: 700px;
   margin-bottom: var(--space-lg);
   line-height: 1.5;
@@ -375,6 +400,7 @@ img {
   border: 1px solid var(--text-muted);
   border-radius: 999px;
   margin-bottom: var(--space-md);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- Content Section --- */
@@ -382,6 +408,8 @@ img {
   padding: var(--space-2xl) 20px;
   max-width: var(--max-width);
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .content-section__grid {
@@ -399,10 +427,6 @@ img {
 .content-section__grid--reverse .content-section__body {
   order: -1;
 }
-
-/* Fix direction issue, use flex order or grid areas if needed, but direction rtl is messy */
-/* Deprecating direction: rtl hack in favor of proper grid/flex ordering if possible,
-   but for now let's just use the order property in media queries or specific classes */
 
 .img-responsive {
   width: 100%;
@@ -445,9 +469,10 @@ img {
   gap: var(--space-xs);
   border: 1px solid var(--divider);
   border-radius: 8px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-card);
   text-align: center;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .pillar__name {
@@ -511,6 +536,15 @@ img {
   border-radius: 6px;
   position: relative;
   z-index: 2;
+  /* Ensure text is readable regardless of theme since background is image */
+  color: #fff;
+}
+
+.article-card--featured .article-card__title,
+.article-card--featured .article-card__excerpt,
+.article-card--featured .article-card__meta {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .article-card__image {
@@ -519,7 +553,7 @@ img {
   background-color: var(--bg-secondary);
   border-radius: 4px;
   overflow: hidden;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -572,6 +606,7 @@ img {
 .familiar {
   background: var(--bg-secondary);
   padding: var(--space-2xl) 0;
+  transition: background-color 0.3s ease;
 }
 
 .familiar__statements {
@@ -591,6 +626,7 @@ img {
   line-height: 1.2;
   letter-spacing: -0.5px;
   color: var(--text-secondary);
+  transition: background-color 0.3s ease;
 }
 
 .familiar__closing {
@@ -633,6 +669,7 @@ img {
   height: 24px;
   border-radius: 50%;
   background: var(--bg-primary);
+  transition: background-color 0.3s ease;
 }
 
 .subscribe__content {
@@ -652,12 +689,12 @@ img {
   font-size: clamp(40px, 5vw, 80px);
   line-height: 0.9;
   letter-spacing: -1.6px;
-  color: var(--text-dark);
+  color: var(--text-dark); /* Always dark on orange */
 }
 
 .subscribe__body {
   font-size: 20px;
-  color: var(--text-dark);
+  color: var(--text-dark); /* Always dark on orange */
   max-width: 500px;
   letter-spacing: -0.4px;
 }
@@ -687,7 +724,7 @@ img {
 .subscribe__button {
   padding: 16px 24px;
   background: var(--text-dark);
-  color: var(--text-headline);
+  color: #F6F8FB; /* Always light text on dark button, regardless of theme */
   font-family: var(--font-body);
   font-size: 20px;
   font-weight: 600;
@@ -717,6 +754,7 @@ img {
   align-items: flex-end;
   max-width: var(--max-width);
   margin: 0 auto;
+  transition: background-color 0.3s ease;
 }
 
 .footer__logo {
@@ -890,6 +928,7 @@ img {
   padding: 32px;
   margin: 2em 0;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .article-body .callout__number {
@@ -1161,12 +1200,12 @@ img {
   .newsletter-page__image {
     min-height: 300px;
     height: 400px;
-    order: -1; /* Image first on mobile? Or last? Let's go first */
+    order: -1;
     margin-bottom: var(--space-lg);
   }
   
   .newsletter-page__features {
-      text-align: left; /* Keep features left-aligned even if centered overall */
+      text-align: left;
   }
 
   .articles-grid--small {
