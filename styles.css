@@ -29,6 +29,22 @@
   /* Dividers */
   --divider: #555659;
   --divider-light: #E9E9E9;
+}
+
+.light-mode {
+  /* Backgrounds */
+  --bg-primary: #F0F0EB; /* Warm light grey */
+  --bg-secondary: #E5E5E0; /* Slightly darker warm grey */
+  
+  /* Text */
+  --text-headline: #2A2A2A; /* Charcoal */
+  --text-body: #2A2A2A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #666666;
+  --text-dark: #0F0E0E; /* Keep pure black for specific contrasts */
+
+  /* Dividers */
+  --divider: #CCCCCC;
 
   /* Fonts */
   --font-display: 'Tilt Warp', sans-serif;
@@ -214,6 +230,26 @@ img {
 
 .nav__link:hover {
   opacity: 0.85;
+}
+
+.nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid var(--text-headline);
+  border-radius: 6px;
+  color: var(--text-headline);
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+
+.nav__toggle:hover {
+  background: var(--text-headline);
+  color: var(--bg-primary);
 }
 
 .nav__link--orange {
