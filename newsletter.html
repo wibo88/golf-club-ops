@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter — Golf Club Ops</title>
+  <meta name="description" content="A monthly email for golf club operators. New articles, sharp insights, and the occasional number that will change how you think about your operations. Free. No spam.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Golf Club Ops</a>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link nav__link--orange">Home</a></li>
+      <li><a href="article.html" class="nav__link nav__link--green">Articles</a></li>
+      <li><a href="about.html" class="nav__link nav__link--blue">About</a></li>
+      <li><a href="newsletter.html" class="nav__link nav__link--white">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- Newsletter Content -->
+  <section class="newsletter-page">
+    <h1 class="h3 newsletter-page__headline">The Golf Club Ops Newsletter</h1>
+    <p class="newsletter-page__body">One email. Once a month. No fluff.</p>
+    <p class="newsletter-page__body">Each edition includes our latest articles, a quick-hit insight you can action immediately, and occasionally a number that will make you rethink something you've been doing for years.</p>
+    <p class="newsletter-page__body" style="color: var(--text-muted); font-size: 18px;">We write for golf club operators who are tired of vendor marketing masquerading as industry insight. If you want honest, specific, practical content about running a modern golf club — this is the one to subscribe to.</p>
+
+    <div class="newsletter-page__features">
+      <div class="newsletter-page__feature-block">
+        <h3>What you'll get</h3>
+        <p>New articles on operations, technology, membership, and revenue strategy. A monthly "by the numbers" stat that puts a figure on something your club probably hasn't measured. The occasional candid take on industry trends that everyone's thinking but nobody's publishing.</p>
+      </div>
+      <div class="newsletter-page__feature-block">
+        <h3>What you won't get</h3>
+        <p>Spam. Sales pitches. Buzzword soup. Anything requiring a 47-minute webinar to understand.</p>
+      </div>
+    </div>
+
+    <form class="subscribe__form" style="margin: var(--space-lg) 0;" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+      <input type="email" class="subscribe__input" placeholder="Your email address" required style="border-color: var(--divider); color: var(--text-headline);">
+      <button type="submit" class="subscribe__button" style="background: var(--bg-accent); color: var(--text-dark);">Subscribe</button>
+    </form>
+
+    <p class="p2" style="color: var(--text-muted);">Monthly. Free. One-click unsubscribe. Your inbox has enough to deal with.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <span>Golf Club</span><br>
+      <span>Ops</span>
+    </div>
+    <div class="footer__content">
+      <div class="footer__links">
+        <div>
+          <span class="footer__col-label">Links</span>
+          <div class="footer__col-links">
+            <a href="index.html">Home</a>
+            <a href="article.html">Articles</a>
+            <a href="about.html">About</a>
+            <a href="newsletter.html">Newsletter</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer__col-label">Connect</span>
+          <div class="footer__col-links">
+            <a href="mailto:hello@golfclubops.com">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Golf Club Ops</p>
+        <p>Independent. Unaffiliated. Occasionally irreverent.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
