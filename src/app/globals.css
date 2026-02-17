@@ -1,0 +1,7 @@
+/* This file imports the existing Golf Club Ops design system.
+   The actual styles are in the root styles.css — we reference it here
+   so Next.js can process it through its CSS pipeline.
+   
+   During migration, we copy the full styles.css content here.
+   For now, we import it. */
+@import '../../styles.css';
