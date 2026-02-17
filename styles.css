@@ -29,6 +29,7 @@
   /* Dividers */
   --divider: #555659;
   --divider-light: #E9E9E9;
+
 }
 
 .light-mode {
@@ -60,9 +61,6 @@
   --space-2xl: 100px;
   --space-3xl: 140px;
 
-  /* Max widths */
-  --max-width: 1280px;
-  --max-reading: 680px;
 }
 
 /* --- Reset & Base --- */
@@ -834,6 +832,7 @@ img {
 }
 
 .article-body {
+  width: 100%;
   max-width: var(--max-reading);
   margin: 0 auto;
   padding: 0 20px var(--space-2xl);
