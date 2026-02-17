@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleButton = document.getElementById('theme-toggle');
   const body = document.body;
   
+  // Icon HTML for Font Awesome
+  const sunIcon = '<i class="fa-regular fa-sun"></i>';
+  const moonIcon = '<i class="fa-regular fa-moon"></i>';
+  
   // Check for saved user preference, if any, on load of the website
   const currentTheme = localStorage.getItem('theme');
   
@@ -13,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // If light mode -> Show Moon (to switch to dark)
   // If dark mode (default) -> Show Sun (to switch to light)
   if (body.classList.contains('light-mode')) {
-    toggleButton.textContent = '🌙';
+    toggleButton.innerHTML = moonIcon;
     toggleButton.setAttribute('aria-label', 'Switch to dark mode');
   } else {
-    toggleButton.textContent = '☀️';
+    toggleButton.innerHTML = sunIcon;
     toggleButton.setAttribute('aria-label', 'Switch to light mode');
   }
 
@@ -30,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update local storage
     if (isLightMode) {
       localStorage.setItem('theme', 'light-mode');
-      toggleButton.textContent = '🌙';
+      toggleButton.innerHTML = moonIcon;
       toggleButton.setAttribute('aria-label', 'Switch to dark mode');
     } else {
       localStorage.removeItem('theme'); // Removing item reverts to default (dark)
-      toggleButton.textContent = '☀️';
+      toggleButton.innerHTML = sunIcon;
       toggleButton.setAttribute('aria-label', 'Switch to light mode');
     }
   });

@@ -208,6 +208,16 @@ img {
 }
 
 /* --- Navigation --- */
+.nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s ease;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -473,6 +483,13 @@ img {
   text-align: center;
   align-items: center;
   transition: background-color 0.3s ease;
+}
+
+.pillar__icon {
+  font-size: 28px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
 }
 
 .pillar__name {
