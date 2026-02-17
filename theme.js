@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Theme Toggle ---
   const toggleButton = document.getElementById('theme-toggle');
   const body = document.body;
   
@@ -13,9 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     body.classList.add(currentTheme);
   }
   
-  // Set initial icon based on current state (default is dark, so if light-mode class is present, we are in light mode)
-  // If light mode -> Show Moon (to switch to dark)
-  // If dark mode (default) -> Show Sun (to switch to light)
+  // Set initial icon based on current state
   if (body.classList.contains('light-mode')) {
     toggleButton.innerHTML = moonIcon;
     toggleButton.setAttribute('aria-label', 'Switch to dark mode');
@@ -25,21 +24,44 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   toggleButton.addEventListener('click', () => {
-    // Toggle the class
     body.classList.toggle('light-mode');
-    
-    // Determine the new theme state
     const isLightMode = body.classList.contains('light-mode');
     
-    // Update local storage
     if (isLightMode) {
       localStorage.setItem('theme', 'light-mode');
       toggleButton.innerHTML = moonIcon;
       toggleButton.setAttribute('aria-label', 'Switch to dark mode');
     } else {
-      localStorage.removeItem('theme'); // Removing item reverts to default (dark)
+      localStorage.removeItem('theme');
       toggleButton.innerHTML = sunIcon;
       toggleButton.setAttribute('aria-label', 'Switch to light mode');
     }
   });
+
+  // --- Hamburger Menu ---
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('is-active');
+      navLinks.classList.toggle('is-open');
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('is-active');
+        navLinks.classList.remove('is-open');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburger.classList.remove('is-active');
+        navLinks.classList.remove('is-open');
+      }
+    });
+  }
 });

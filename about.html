@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Golf Club Ops</title>
-  <meta name="description" content="An independent resource for golf club operators. Honest content about operations, technology, and strategy — no vendor spin, no consultant jargon, no sponsored content.">
+  <meta name="description" content="An independent resource for golf club operators. Honest content about operations, technology, and strategy — practical intelligence from people who understand the industry.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
@@ -15,9 +15,14 @@
   <div class="nav-wrapper">
     <nav class="nav">
       <a href="index.html" class="nav__logo">Golf Club Ops</a>
-      <ul class="nav__links">
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
         <li><a href="index.html" class="nav__link nav__link--orange">Home</a></li>
-        <li><a href="article.html" class="nav__link nav__link--green">Articles</a></li>
+        <li><a href="articles.html" class="nav__link nav__link--green">Articles</a></li>
         <li><a href="about.html" class="nav__link nav__link--blue">About</a></li>
         <li><a href="newsletter.html" class="nav__link nav__link--white">Newsletter</a></li>
         <li><button id="theme-toggle" class="nav__toggle" aria-label="Toggle dark/light mode"><i class="fa-regular fa-sun"></i></button></li>
@@ -52,8 +57,8 @@
         <img src="images/Golf_Club_Operations_2026-10.jpg" alt="Analyzing golf software" style="width: 100%; border-radius: 8px; aspect-ratio: 4/3; object-fit: cover;">
       </div>
       <div class="content-section__body">
-        <span class="section-label" style="display: block; margin-bottom: var(--space-sm);">What this isn't</span>
-        <p>This isn't a vendor blog dressed up as journalism. We're not here to sell you a platform. We don't accept sponsored content, and our technology reviews are based on actual product analysis — not media kits.</p>
+        <span class="section-label" style="display: block; margin-bottom: var(--space-sm);">Our approach</span>
+        <p>We believe the golf industry deserves better information. Our technology reviews are based on actual product analysis, real operator feedback, and hands-on experience — not press releases or feature comparison spreadsheets.</p>
         <p>When we recommend something, it's because we've looked at it properly. When we criticise something, it's because the criticism is specific, fair, and backed by evidence. And when we make a joke about your tee sheet software looking like Minesweeper, it's because we've seen it, and honestly, the resemblance is uncanny.</p>
       </div>
     </div>
@@ -117,7 +122,7 @@
           <span class="footer__col-label">Links</span>
           <div class="footer__col-links">
             <a href="index.html">Home</a>
-            <a href="article.html">Articles</a>
+            <a href="articles.html">Articles</a>
             <a href="about.html">About</a>
             <a href="newsletter.html">Newsletter</a>
           </div>

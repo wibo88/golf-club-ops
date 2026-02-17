@@ -6,20 +6,29 @@
   <title>404 — Golf Club Ops</title>
   <meta name="description" content="This page is out of bounds.">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav class="nav">
-    <a href="index.html" class="nav__logo">Golf Club Ops</a>
-    <ul class="nav__links">
-      <li><a href="index.html" class="nav__link nav__link--orange">Home</a></li>
-      <li><a href="article.html" class="nav__link nav__link--green">Articles</a></li>
-      <li><a href="about.html" class="nav__link nav__link--blue">About</a></li>
-      <li><a href="newsletter.html" class="nav__link nav__link--white">Newsletter</a></li>
-    </ul>
-  </nav>
+  <div class="nav-wrapper">
+    <nav class="nav">
+      <a href="index.html" class="nav__logo">Golf Club Ops</a>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html" class="nav__link nav__link--orange">Home</a></li>
+        <li><a href="articles.html" class="nav__link nav__link--green">Articles</a></li>
+        <li><a href="about.html" class="nav__link nav__link--blue">About</a></li>
+        <li><a href="newsletter.html" class="nav__link nav__link--white">Newsletter</a></li>
+        <li><button id="theme-toggle" class="nav__toggle" aria-label="Toggle dark/light mode"><i class="fa-regular fa-sun"></i></button></li>
+      </ul>
+    </nav>
+  </div>
 
   <!-- 404 Content -->
   <section class="page-404">
@@ -40,7 +49,7 @@
           <span class="footer__col-label">Links</span>
           <div class="footer__col-links">
             <a href="index.html">Home</a>
-            <a href="article.html">Articles</a>
+            <a href="articles.html">Articles</a>
             <a href="about.html">About</a>
             <a href="newsletter.html">Newsletter</a>
           </div>
@@ -59,5 +68,6 @@
     </div>
   </footer>
 
+  <script src="theme.js"></script>
 </body>
 </html>
