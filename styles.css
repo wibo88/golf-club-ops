@@ -961,6 +961,19 @@ img {
   font-style: italic;
 }
 
+.article-body a {
+  color: var(--bg-blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(145, 222, 237, 0.4);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.article-body a:hover {
+  text-decoration-color: var(--bg-blue);
+  color: #b8e8f5;
+}
+
 .article-body blockquote {
   border-left: 3px solid var(--bg-accent);
   padding-left: 24px;
