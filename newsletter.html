@@ -23,28 +23,34 @@
 
   <!-- Newsletter Content -->
   <section class="newsletter-page">
-    <h1 class="h3 newsletter-page__headline">The Golf Club Ops Newsletter</h1>
-    <p class="newsletter-page__body">One email. Once a month. No fluff.</p>
-    <p class="newsletter-page__body">Each edition includes our latest articles, a quick-hit insight you can action immediately, and occasionally a number that will make you rethink something you've been doing for years.</p>
-    <p class="newsletter-page__body" style="color: var(--text-muted); font-size: 18px;">We write for golf club operators who are tired of vendor marketing masquerading as industry insight. If you want honest, specific, practical content about running a modern golf club — this is the one to subscribe to.</p>
+    <div class="newsletter-page__content">
+      <h1 class="h3 newsletter-page__headline">The Golf Club Ops Newsletter</h1>
+      <p class="newsletter-page__body">One email. Once a month. No fluff.</p>
+      <p class="newsletter-page__body">Each edition includes our latest articles, a quick-hit insight you can action immediately, and occasionally a number that will make you rethink something you've been doing for years.</p>
+      <p class="newsletter-page__body" style="color: var(--text-muted); font-size: 18px;">We write for golf club operators who are tired of vendor marketing masquerading as industry insight. If you want honest, specific, practical content about running a modern golf club — this is the one to subscribe to.</p>
 
-    <div class="newsletter-page__features">
-      <div class="newsletter-page__feature-block">
-        <h3>What you'll get</h3>
-        <p>New articles on operations, technology, membership, and revenue strategy. A monthly "by the numbers" stat that puts a figure on something your club probably hasn't measured. The occasional candid take on industry trends that everyone's thinking but nobody's publishing.</p>
+      <div class="newsletter-page__features">
+        <div class="newsletter-page__feature-block">
+          <h3>What you'll get</h3>
+          <p>New articles on operations, technology, membership, and revenue strategy. A monthly "by the numbers" stat that puts a figure on something your club probably hasn't measured. The occasional candid take on industry trends that everyone's thinking but nobody's publishing.</p>
+        </div>
+        <div class="newsletter-page__feature-block">
+          <h3>What you won't get</h3>
+          <p>Spam. Sales pitches. Buzzword soup. Anything requiring a 47-minute webinar to understand.</p>
+        </div>
       </div>
-      <div class="newsletter-page__feature-block">
-        <h3>What you won't get</h3>
-        <p>Spam. Sales pitches. Buzzword soup. Anything requiring a 47-minute webinar to understand.</p>
-      </div>
+
+      <form class="subscribe__form" style="margin: var(--space-lg) 0;" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+        <input type="email" class="subscribe__input" placeholder="Your email address" required style="border-color: var(--divider); color: var(--text-headline);">
+        <button type="submit" class="subscribe__button" style="background: var(--bg-accent); color: var(--text-dark);">Subscribe</button>
+      </form>
+
+      <p class="p2" style="color: var(--text-muted);">Monthly. Free. One-click unsubscribe. Your inbox has enough to deal with.</p>
     </div>
-
-    <form class="subscribe__form" style="margin: var(--space-lg) 0;" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-      <input type="email" class="subscribe__input" placeholder="Your email address" required style="border-color: var(--divider); color: var(--text-headline);">
-      <button type="submit" class="subscribe__button" style="background: var(--bg-accent); color: var(--text-dark);">Subscribe</button>
-    </form>
-
-    <p class="p2" style="color: var(--text-muted);">Monthly. Free. One-click unsubscribe. Your inbox has enough to deal with.</p>
+    
+    <div class="newsletter-page__image-container">
+      <img src="images/Golf_Club_Operations_2026-19.jpg" alt="Atmospheric golf course view" class="newsletter-page__image">
+    </div>
   </section>
 
   <!-- Footer -->

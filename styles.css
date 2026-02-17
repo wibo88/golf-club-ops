@@ -258,6 +258,30 @@ img {
   padding: var(--space-3xl) 20px var(--space-2xl);
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 12px 12px;
+}
+
+.hero--with-bg {
+  color: var(--text-headline);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  /* Ensure text is readable */
+  z-index: 1;
+}
+
+.hero--with-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(15, 14, 14, 0.3), rgba(15, 14, 14, 0.8));
+  z-index: -1;
 }
 
 .hero__headline {
@@ -314,6 +338,26 @@ img {
   grid-template-columns: 200px 1fr;
   gap: var(--space-lg);
   align-items: start;
+}
+
+.content-section__grid--with-image {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.content-section__grid--reverse .content-section__body {
+  order: -1;
+}
+
+/* Fix direction issue, use flex order or grid areas if needed, but direction rtl is messy */
+/* Deprecating direction: rtl hack in favor of proper grid/flex ordering if possible,
+   but for now let's just use the order property in media queries or specific classes */
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .content-section__label {
@@ -421,10 +465,13 @@ img {
 .article-card__image {
   width: 100%;
   aspect-ratio: 4/5;
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
   border-radius: 4px;
   overflow: hidden;
   transition: opacity 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .article-card:hover .article-card__image {
@@ -690,6 +737,21 @@ img {
   margin: 0 auto;
 }
 
+.article-header__image-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: var(--space-xl) auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.article-header__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .article-header__title {
   font-family: var(--font-display);
   font-size: clamp(36px, 5vw, 72px);
@@ -852,6 +914,14 @@ img {
   margin: 0 auto;
 }
 
+.about-hero__image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: var(--space-lg);
+}
+
 .about-content {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -865,14 +935,34 @@ img {
 /* --- Newsletter Page --- */
 .newsletter-page {
   min-height: 80vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--space-3xl) 20px;
-  max-width: 700px;
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: var(--space-3xl) 20px;
+}
+
+.newsletter-page__content {
+  text-align: left;
+  max-width: 600px;
+}
+
+.newsletter-page__image-container {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.newsletter-page__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .newsletter-page__headline {
@@ -996,9 +1086,35 @@ img {
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
-  .content-section__grid {
+  .content-section__grid,
+  .content-section__grid--with-image {
     grid-template-columns: 1fr;
     gap: var(--space-sm);
+  }
+
+  .content-section__grid--reverse {
+    direction: ltr;
+  }
+
+  .newsletter-page {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .newsletter-page__content {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter-page__image {
+    min-height: 300px;
+    height: 400px;
+    order: -1; /* Image first on mobile? Or last? Let's go first */
+    margin-bottom: var(--space-lg);
+  }
+  
+  .newsletter-page__features {
+      text-align: left; /* Keep features left-aligned even if centered overall */
   }
 
   .articles-grid--small {
