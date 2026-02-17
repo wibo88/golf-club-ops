@@ -7,6 +7,13 @@
   <meta name="description" content="Honest, practical intelligence for golf club operators. Operations breakdowns, technology reviews, membership strategy, and revenue insights — written by people who've actually been inside a clubhouse.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="canonical" href="https://www.golfclubops.com">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.golfclubops.com">
+  <meta property="og:title" content="Golf Club Ops — The No-BS Guide to Running a Modern Golf Club">
+  <meta property="og:description" content="Honest, practical intelligence for golf club operators. Operations breakdowns, technology reviews, membership strategy, and revenue insights.">
+  <meta property="og:image" content="https://www.golfclubops.com/images/Golf_Club_Operations_2026-1.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
 </head>
 <body>
@@ -14,17 +21,17 @@
   <!-- Navigation -->
   <div class="nav-wrapper">
     <nav class="nav">
-      <a href="index.html" class="nav__logo">Golf Club Ops</a>
+      <a href="/" class="nav__logo">Golf Club Ops</a>
       <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
       <ul class="nav__links" id="nav-links">
-        <li><a href="index.html" class="nav__link nav__link--orange">Home</a></li>
-        <li><a href="articles.html" class="nav__link nav__link--green">Articles</a></li>
-        <li><a href="about.html" class="nav__link nav__link--blue">About</a></li>
-        <li><a href="newsletter.html" class="nav__link nav__link--white">Newsletter</a></li>
+        <li><a href="/" class="nav__link nav__link--orange">Home</a></li>
+        <li><a href="/articles" class="nav__link nav__link--green">Articles</a></li>
+        <li><a href="/about" class="nav__link nav__link--blue">About</a></li>
+        <li><a href="/newsletter" class="nav__link nav__link--white">Newsletter</a></li>
         <li><button id="theme-toggle" class="nav__toggle" aria-label="Toggle dark/light mode"><i class="fa-regular fa-sun"></i></button></li>
       </ul>
     </nav>
@@ -36,7 +43,7 @@
     <div class="hero__content">
       <h1 class="h1 hero__headline">The no-BS guide to running a modern golf club.</h1>
       <p class="hero__sub">Practical intelligence for the next generation of golf club operators. Because your software shouldn't require a training webinar longer than your back nine.</p>
-      <a href="articles.html" class="hero__cta">Read the latest <span>&rarr;</span></a>
+      <a href="/articles" class="hero__cta">Read the latest <span>&rarr;</span></a>
     </div>
   </section>
 
@@ -95,7 +102,7 @@
 
     <!-- Featured Article - Large -->
     <div class="articles-grid articles-grid--featured">
-      <a href="article.html" class="article-card article-card--featured" style="background-image: url('images/Golf_Club_Operations_2026-6.jpg'); background-size: cover; background-position: center;">
+      <a href="/article" class="article-card article-card--featured" style="background-image: url('images/Golf_Club_Operations_2026-6.jpg'); background-size: cover; background-position: center;">
         <div class="article-card__content">
           <h3 class="article-card__title">What a Visitor Booking Actually Costs Your Club</h3>
           <p class="article-card__excerpt">We timed the entire visitor booking process at premium golf clubs. The average: 22 minutes per booking. At 400 visitors a year, that's nearly a month of full-time work.</p>
@@ -111,7 +118,7 @@
 
     <!-- Secondary Articles - Small -->
     <div class="articles-grid articles-grid--small">
-      <a href="golf-software-2026.html" class="article-card">
+      <a href="/golf-software-2026" class="article-card">
         <div class="article-card__image" style="background-image: url('images/Golf_Club_Operations_2026-3.jpg'); background-size: cover; background-position: center;"></div>
         <h3 class="article-card__title">Golf Club Management Software in 2026: An Honest Landscape Review</h3>
         <div class="article-card__meta">
@@ -120,7 +127,7 @@
           <span>12 min read</span>
         </div>
       </a>
-      <a href="tee-sheet-software-1999.html" class="article-card">
+      <a href="/tee-sheet-software-1999" class="article-card">
         <div class="article-card__image" style="background-image: url('images/Golf_Club_Operations_2026-17.jpg'); background-size: cover; background-position: center;"></div>
         <h3 class="article-card__title">Why Your Tee Sheet Software Still Looks Like It Was Built in 1999</h3>
         <div class="article-card__meta">
@@ -129,7 +136,7 @@
           <span>11 min read</span>
         </div>
       </a>
-      <a href="gm-guide-committee-tech-change.html" class="article-card">
+      <a href="/gm-guide-committee-tech-change" class="article-card">
         <div class="article-card__image" style="background-image: url('images/Golf_Club_Operations_2026-20.jpg'); background-size: cover; background-position: center;"></div>
         <h3 class="article-card__title">A GM's Guide to Pitching Technology Change to a Conservative Committee</h3>
         <div class="article-card__meta">
@@ -141,7 +148,7 @@
     </div>
 
   <div style="margin-top: var(--space-lg);">
-    <a href="articles.html" class="view-all-btn">View all articles</a>
+    <a href="/articles" class="view-all-btn">View all articles</a>
   </div>
 </section>
 
@@ -171,8 +178,8 @@
         <h2 class="subscribe__headline">Get the good stuff, monthly.</h2>
         <p class="subscribe__body" style="margin-top: 16px;">One email per month. The latest articles, the sharpest insights, and the occasional number that will make you look at your own processes differently. No spam, no sales pitches, no attachments that require a webinar to open.</p>
       </div>
-      <form class="subscribe__form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-        <input type="email" class="subscribe__input" placeholder="Your email address" required>
+      <form class="subscribe__form" action="https://formspree.io/f/xnjbvgvq" method="POST">
+        <input type="email" name="email" class="subscribe__input" placeholder="Your email address" required>
         <button type="submit" class="subscribe__button">Subscribe</button>
       </form>
       <p class="subscribe__micro">Free. Monthly. Unsubscribe whenever you like. We're not going to make it weird.</p>
@@ -195,10 +202,10 @@
         <div>
           <span class="footer__col-label">Links</span>
           <div class="footer__col-links">
-            <a href="index.html">Home</a>
-            <a href="articles.html">Articles</a>
-            <a href="about.html">About</a>
-            <a href="newsletter.html">Newsletter</a>
+            <a href="/">Home</a>
+            <a href="/articles">Articles</a>
+            <a href="/about">About</a>
+            <a href="/newsletter">Newsletter</a>
           </div>
         </div>
         <div>

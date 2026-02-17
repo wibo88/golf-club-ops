@@ -7,6 +7,13 @@
   <meta name="description" content="A monthly email for golf club operators. New articles, sharp insights, and the occasional number that will change how you think about your operations. Free. No spam.">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="canonical" href="https://www.golfclubops.com/newsletter">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.golfclubops.com/newsletter">
+  <meta property="og:title" content="Newsletter — Golf Club Ops">
+  <meta property="og:description" content="Monthly insights for golf club operators. Operations, technology, and strategy delivered to your inbox.">
+  <meta property="og:image" content="https://www.golfclubops.com/images/Golf_Club_Operations_2026-12.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
 </head>
 <body>
@@ -14,17 +21,17 @@
   <!-- Navigation -->
   <div class="nav-wrapper">
     <nav class="nav">
-      <a href="index.html" class="nav__logo">Golf Club Ops</a>
+      <a href="/" class="nav__logo">Golf Club Ops</a>
       <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
       <ul class="nav__links" id="nav-links">
-        <li><a href="index.html" class="nav__link nav__link--orange">Home</a></li>
-        <li><a href="articles.html" class="nav__link nav__link--green">Articles</a></li>
-        <li><a href="about.html" class="nav__link nav__link--blue">About</a></li>
-        <li><a href="newsletter.html" class="nav__link nav__link--white">Newsletter</a></li>
+        <li><a href="/" class="nav__link nav__link--orange">Home</a></li>
+        <li><a href="/articles" class="nav__link nav__link--green">Articles</a></li>
+        <li><a href="/about" class="nav__link nav__link--blue">About</a></li>
+        <li><a href="/newsletter" class="nav__link nav__link--white">Newsletter</a></li>
         <li><button id="theme-toggle" class="nav__toggle" aria-label="Toggle dark/light mode"><i class="fa-regular fa-sun"></i></button></li>
       </ul>
     </nav>
@@ -49,8 +56,8 @@
         </div>
       </div>
 
-      <form class="subscribe__form" style="margin: var(--space-lg) 0;" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-        <input type="email" class="subscribe__input" placeholder="Your email address" required style="border-color: var(--divider); color: var(--text-headline);">
+      <form class="subscribe__form" style="margin: var(--space-lg) 0;" action="https://formspree.io/f/xnjbvgvq" method="POST">
+        <input type="email" name="email" class="subscribe__input" placeholder="Your email address" required style="border-color: var(--divider); color: var(--text-headline);">
         <button type="submit" class="subscribe__button" style="background: var(--bg-accent); color: var(--text-dark);">Subscribe</button>
       </form>
 
@@ -73,10 +80,10 @@
         <div>
           <span class="footer__col-label">Links</span>
           <div class="footer__col-links">
-            <a href="index.html">Home</a>
-            <a href="articles.html">Articles</a>
-            <a href="about.html">About</a>
-            <a href="newsletter.html">Newsletter</a>
+            <a href="/">Home</a>
+            <a href="/articles">Articles</a>
+            <a href="/about">About</a>
+            <a href="/newsletter">Newsletter</a>
           </div>
         </div>
         <div>
