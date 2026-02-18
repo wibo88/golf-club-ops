@@ -65,6 +65,8 @@ export const PAGE_BY_SLUG_QUERY = `*[_type == "page" && slug.current == $slug][0
   heroImagePath,
   heroHeadline,
   heroSubtitle,
+  heroCtaText,
+  heroCtaLink,
   sections,
   showSubscribe,
   body,

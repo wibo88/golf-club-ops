@@ -47,6 +47,18 @@ export default {
       rows: 2,
     },
     {
+      name: 'heroCtaText',
+      title: 'Hero CTA Button Text',
+      type: 'string',
+      description: 'Text for the call-to-action button in the hero (e.g. "Read the latest")',
+    },
+    {
+      name: 'heroCtaLink',
+      title: 'Hero CTA Button Link',
+      type: 'string',
+      description: 'URL for the CTA button (e.g. /articles)',
+    },
+    {
       name: 'sections',
       title: 'Page Sections',
       type: 'array',
@@ -106,6 +118,126 @@ export default {
             select: { title: 'label' },
             prepare({ title }: { title: string }) {
               return { title: title || 'Content Section' };
+            },
+          },
+        },
+        {
+          name: 'pillarsSection',
+          title: 'Pillars / Feature Grid',
+          type: 'object',
+          fields: [
+            {
+              name: 'heading',
+              title: 'Section Heading',
+              type: 'string',
+              description: 'e.g. "What We Cover"',
+            },
+            {
+              name: 'pillars',
+              title: 'Pillars',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'icon',
+                      title: 'Font Awesome Icon Class',
+                      type: 'string',
+                      description: 'e.g. fa-solid fa-gears',
+                    },
+                    {
+                      name: 'name',
+                      title: 'Pillar Name',
+                      type: 'string',
+                    },
+                    {
+                      name: 'description',
+                      title: 'Description',
+                      type: 'string',
+                    },
+                  ],
+                  preview: {
+                    select: { title: 'name', subtitle: 'description' },
+                  },
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: { title: 'heading' },
+            prepare({ title }: { title: string }) {
+              return { title: title || '🏛️ Pillars Section' };
+            },
+          },
+        },
+        {
+          name: 'featuredArticlesSection',
+          title: 'Featured Articles',
+          type: 'object',
+          fields: [
+            {
+              name: 'heading',
+              title: 'Section Heading',
+              type: 'string',
+              description: 'e.g. "Featured Articles"',
+            },
+            {
+              name: 'maxSecondary',
+              title: 'Max Secondary Articles',
+              type: 'number',
+              description: 'Number of non-featured articles to show (default: 3)',
+              initialValue: 3,
+            },
+            {
+              name: 'viewAllText',
+              title: '"View All" Button Text',
+              type: 'string',
+              initialValue: 'View all articles',
+            },
+            {
+              name: 'viewAllLink',
+              title: '"View All" Button Link',
+              type: 'string',
+              initialValue: '/articles',
+            },
+          ],
+          preview: {
+            select: { title: 'heading' },
+            prepare({ title }: { title: string }) {
+              return { title: title || '📰 Featured Articles Section' };
+            },
+          },
+        },
+        {
+          name: 'familiarSection',
+          title: '"Sounds Familiar" Section',
+          type: 'object',
+          fields: [
+            {
+              name: 'heading',
+              title: 'Section Heading',
+              type: 'string',
+              description: 'e.g. "If any of this sounds familiar..."',
+            },
+            {
+              name: 'statements',
+              title: 'Statements',
+              type: 'array',
+              of: [{ type: 'string' }],
+              description: 'The quoted statements shown in this section',
+            },
+            {
+              name: 'closingText',
+              title: 'Closing Text',
+              type: 'string',
+              description: 'Text shown after the statements (e.g. "Then you\'re in the right place.")',
+            },
+          ],
+          preview: {
+            select: { title: 'heading' },
+            prepare({ title }: { title: string }) {
+              return { title: title || '💬 Familiar Section' };
             },
           },
         },

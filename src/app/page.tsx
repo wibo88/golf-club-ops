@@ -1,19 +1,87 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { client, ARTICLES_QUERY, SITE_SETTINGS_QUERY } from '@/lib/sanity';
+import { client, ARTICLES_QUERY, SITE_SETTINGS_QUERY, PAGE_BY_SLUG_QUERY } from '@/lib/sanity';
 import { urlFor } from '@/lib/sanity.image';
 import ArticleCard from '@/components/ArticleCard';
+import PageSectionRenderer from '@/components/PageSectionRenderer';
 import Subscribe from '@/components/Subscribe';
 
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await client.fetch(PAGE_BY_SLUG_QUERY, { slug: 'home' });
+  return {
+    title: page?.seo?.metaTitle || 'Golf Club Ops — The No-BS Guide to Running a Modern Golf Club',
+    description:
+      page?.seo?.metaDescription ||
+      'Practical intelligence for the next generation of golf club operators.',
+    openGraph: {
+      title: page?.seo?.metaTitle || 'Golf Club Ops — The No-BS Guide to Running a Modern Golf Club',
+      description:
+        page?.seo?.metaDescription ||
+        'Practical intelligence for the next generation of golf club operators.',
+    },
+  };
+}
+
 async function getData() {
-  const [articles, settings] = await Promise.all([
+  const [articles, settings, page] = await Promise.all([
     client.fetch(ARTICLES_QUERY),
     client.fetch(SITE_SETTINGS_QUERY),
+    client.fetch(PAGE_BY_SLUG_QUERY, { slug: 'home' }),
   ]);
-  return { articles, settings };
+  return { articles, settings, page };
 }
 
 export default async function HomePage() {
-  const { articles, settings } = await getData();
+  const { articles, settings, page } = await getData();
+
+  // If CMS page document exists, render CMS-driven layout
+  if (page) {
+    const heroImageUrl = page.heroImage
+      ? urlFor(page.heroImage).width(1600).quality(80).url()
+      : page.heroImagePath || null;
+
+    return (
+      <>
+        {/* Hero */}
+        {(heroImageUrl || page.heroHeadline) && (
+          <section
+            className="hero hero--with-bg"
+            style={heroImageUrl ? { backgroundImage: `url('${heroImageUrl}')` } : undefined}
+          >
+            <div className="hero__overlay"></div>
+            <div className="hero__content">
+              {page.heroHeadline && (
+                <h1 className="h1 hero__headline">{page.heroHeadline}</h1>
+              )}
+              {page.heroSubtitle && (
+                <p className="hero__sub">{page.heroSubtitle}</p>
+              )}
+              {page.heroCtaText && page.heroCtaLink && (
+                <Link href={page.heroCtaLink} className="hero__cta">
+                  {page.heroCtaText} <span>&rarr;</span>
+                </Link>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* CMS Sections */}
+        <PageSectionRenderer
+          sections={page.sections}
+          formspreeId={settings?.formspreeId}
+          articles={articles}
+        />
+
+        {/* Bottom Subscribe (only if not already in sections) */}
+        {page.showSubscribe &&
+          !page.sections?.some((s: any) => s._type === 'subscribeSection') && (
+            <Subscribe formspreeId={settings?.formspreeId} />
+          )}
+      </>
+    );
+  }
+
+  // ── Static fallback (no CMS document yet) ──────────────────
 
   const featuredArticle = articles?.find((a: any) => a.featured);
   const secondaryArticles = articles
