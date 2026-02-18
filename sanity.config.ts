@@ -7,6 +7,7 @@ export default defineConfig({
   title: 'Golf Club Ops',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'wxh00ex7',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  basePath: '/studio',
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
