@@ -8,6 +8,7 @@ interface ArticleCardProps {
   category?: { name: string };
   readTime?: string;
   heroImage?: any;
+  heroImagePath?: string;
   featured?: boolean;
 }
 
@@ -18,9 +19,12 @@ export default function ArticleCard({
   category,
   readTime,
   heroImage,
+  heroImagePath,
   featured = false,
 }: ArticleCardProps) {
-  const imageUrl = heroImage ? urlFor(heroImage).width(800).quality(80).url() : '';
+  const imageUrl = heroImage
+    ? urlFor(heroImage).width(800).quality(80).url()
+    : heroImagePath || '';
 
   if (featured) {
     return (

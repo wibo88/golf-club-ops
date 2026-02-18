@@ -70,6 +70,12 @@ export default {
       ],
     },
     {
+      name: 'heroImagePath',
+      title: 'Hero Image Path (local)',
+      type: 'string',
+      description: 'Path to a local image in /public (e.g. /images/photo.jpg). Used when not uploading to Sanity CDN.',
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent',

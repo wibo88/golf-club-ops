@@ -84,6 +84,12 @@ export default {
               description: 'Path to a local image in /public (e.g. /images/photo.jpg)',
             },
             {
+              name: 'imageCaption',
+              title: 'Image Caption',
+              type: 'string',
+              description: 'Caption text shown below the image',
+            },
+            {
               name: 'imagePosition',
               title: 'Image Position',
               type: 'string',

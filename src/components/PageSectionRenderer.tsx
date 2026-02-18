@@ -9,6 +9,7 @@ interface ContentSection {
   body?: any[];
   image?: any;
   imagePath?: string;
+  imageCaption?: string;
   imagePosition?: 'left' | 'right';
 }
 
@@ -26,7 +27,7 @@ function ContentSectionBlock({ section }: { section: ContentSection }) {
     : section.imagePath || null;
 
   const imageAlt = section.image?.alt || 'Section image';
-  const imageCaption = section.image?.caption || null;
+  const imageCaption = section.image?.caption || section.imageCaption || null;
   const isImageLeft = section.imagePosition === 'left';
 
   const textContent = (

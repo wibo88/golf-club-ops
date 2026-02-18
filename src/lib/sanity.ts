@@ -19,6 +19,7 @@ export const ARTICLES_QUERY = `*[_type == "article"] | order(publishDate desc) {
   publishDate,
   featured,
   heroImage,
+  heroImagePath,
   "category": category->{ name, slug }
 }`;
 
@@ -31,6 +32,7 @@ export const FEATURED_ARTICLES_QUERY = `*[_type == "article" && featured == true
   readTime,
   publishDate,
   heroImage,
+  heroImagePath,
   "category": category->{ name, slug }
 }`;
 
@@ -43,10 +45,11 @@ export const ARTICLE_BY_SLUG_QUERY = `*[_type == "article" && slug.current == $s
   readTime,
   publishDate,
   heroImage,
+  heroImagePath,
   body,
   "category": category->{ name, slug },
-  "relatedArticles": relatedArticles[]->{ 
-    _id, title, slug, excerpt, readTime, heroImage,
+  "relatedArticles": relatedArticles[]->{
+    _id, title, slug, excerpt, readTime, heroImage, heroImagePath,
     "category": category->{ name, slug }
   },
   seo

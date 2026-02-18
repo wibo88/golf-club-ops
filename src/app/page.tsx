@@ -134,6 +134,7 @@ export default async function HomePage() {
               category={featuredArticle.category}
               readTime={featuredArticle.readTime}
               heroImage={featuredArticle.heroImage}
+              heroImagePath={featuredArticle.heroImagePath}
               featured
             />
           </div>
@@ -149,6 +150,7 @@ export default async function HomePage() {
                 category={article.category}
                 readTime={article.readTime}
                 heroImage={article.heroImage}
+                heroImagePath={article.heroImagePath}
               />
             ))}
           </div>

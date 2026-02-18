@@ -23,7 +23,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const ogImage = article.heroImage
     ? urlFor(article.heroImage).width(1200).height(630).url()
-    : undefined;
+    : article.heroImagePath
+      ? `https://www.golfclubops.com${article.heroImagePath}`
+      : undefined;
 
   return {
     title: article.seo?.metaTitle || article.title,
@@ -48,7 +50,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const heroImageUrl = article.heroImage
     ? urlFor(article.heroImage).width(1600).quality(80).url()
-    : null;
+    : article.heroImagePath || null;
 
   const publishDate = article.publishDate
     ? new Date(article.publishDate).toLocaleDateString('en-AU', {
@@ -110,6 +112,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 category={related.category}
                 readTime={related.readTime}
                 heroImage={related.heroImage}
+                heroImagePath={related.heroImagePath}
               />
             ))}
           </div>
