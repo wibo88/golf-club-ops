@@ -18,7 +18,7 @@ export default {
     },
     {
       name: 'heroImage',
-      title: 'Hero Image',
+      title: 'Hero Background Image',
       type: 'image',
       options: { hotspot: true },
       fields: [
@@ -30,9 +30,105 @@ export default {
       ],
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      name: 'heroImagePath',
+      title: 'Hero Image Path (local)',
+      type: 'string',
+      description: 'Path to a local image in /public (e.g. /images/photo.jpg). Used when not uploading to Sanity CDN.',
+    },
+    {
+      name: 'heroHeadline',
+      title: 'Hero Headline',
+      type: 'string',
+    },
+    {
+      name: 'heroSubtitle',
+      title: 'Hero Subtitle',
+      type: 'text',
+      rows: 2,
+    },
+    {
+      name: 'sections',
+      title: 'Page Sections',
+      type: 'array',
+      of: [
+        {
+          name: 'contentSection',
+          title: 'Content Section',
+          type: 'object',
+          fields: [
+            {
+              name: 'label',
+              title: 'Section Label',
+              type: 'string',
+              description: 'Small label above the content (e.g. "Our mission", "What you get")',
+            },
+            {
+              name: 'body',
+              title: 'Body',
+              type: 'blockContent',
+            },
+            {
+              name: 'image',
+              title: 'Side Image',
+              type: 'image',
+              options: { hotspot: true },
+              fields: [
+                { name: 'alt', title: 'Alt Text', type: 'string' },
+                { name: 'caption', title: 'Caption', type: 'string' },
+              ],
+            },
+            {
+              name: 'imagePath',
+              title: 'Side Image Path (local)',
+              type: 'string',
+              description: 'Path to a local image in /public (e.g. /images/photo.jpg)',
+            },
+            {
+              name: 'imagePosition',
+              title: 'Image Position',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Right', value: 'right' },
+                  { title: 'Left', value: 'left' },
+                ],
+              },
+              initialValue: 'right',
+            },
+          ],
+          preview: {
+            select: { title: 'label' },
+            prepare({ title }: { title: string }) {
+              return { title: title || 'Content Section' };
+            },
+          },
+        },
+        {
+          name: 'subscribeSection',
+          title: 'Subscribe / Newsletter Signup',
+          type: 'object',
+          fields: [
+            {
+              name: 'enabled',
+              title: 'Show Subscribe Form',
+              type: 'boolean',
+              initialValue: true,
+            },
+          ],
+          preview: {
+            prepare() {
+              return { title: '📧 Subscribe Section' };
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'showSubscribe',
+      title: 'Show Subscribe at Bottom',
+      type: 'boolean',
+      description: 'Show the newsletter subscribe form at the bottom of the page',
+      initialValue: true,
     },
     {
       name: 'seo',

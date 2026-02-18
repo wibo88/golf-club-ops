@@ -1,22 +1,30 @@
 import type { Metadata } from 'next';
-import { client, PAGE_BY_SLUG_QUERY } from '@/lib/sanity';
+import { client, PAGE_BY_SLUG_QUERY, SITE_SETTINGS_QUERY } from '@/lib/sanity';
 import { urlFor } from '@/lib/sanity.image';
-import PortableTextRenderer from '@/components/PortableTextRenderer';
+import PageSectionRenderer from '@/components/PageSectionRenderer';
 import Subscribe from '@/components/Subscribe';
 
-export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'Golf Club Ops exists because nobody else is writing honestly about what it takes to run a golf club in 2026.',
-  openGraph: {
-    title: 'About — Golf Club Ops',
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await client.fetch(PAGE_BY_SLUG_QUERY, { slug: 'about' });
+  return {
+    title: page?.seo?.metaTitle || page?.title || 'About',
     description:
+      page?.seo?.metaDescription ||
       'Golf Club Ops exists because nobody else is writing honestly about what it takes to run a golf club in 2026.',
-  },
-};
+    openGraph: {
+      title: page?.seo?.metaTitle || 'About — Golf Club Ops',
+      description:
+        page?.seo?.metaDescription ||
+        'Golf Club Ops exists because nobody else is writing honestly about what it takes to run a golf club in 2026.',
+    },
+  };
+}
 
 export default async function AboutPage() {
-  const page = await client.fetch(PAGE_BY_SLUG_QUERY, { slug: 'about' });
+  const [page, settings] = await Promise.all([
+    client.fetch(PAGE_BY_SLUG_QUERY, { slug: 'about' }),
+    client.fetch(SITE_SETTINGS_QUERY),
+  ]);
 
   // If no CMS content yet, render the static fallback
   if (!page) {
@@ -125,30 +133,39 @@ export default async function AboutPage() {
     );
   }
 
-  // CMS-driven about page
+  // CMS-driven page
   const heroImageUrl = page.heroImage
     ? urlFor(page.heroImage).width(1600).quality(80).url()
-    : null;
+    : page.heroImagePath || null;
 
   return (
     <>
-      {heroImageUrl && (
+      {/* Hero */}
+      {(heroImageUrl || page.heroHeadline) && (
         <section
           className="hero hero--with-bg"
-          style={{ backgroundImage: `url('${heroImageUrl}')` }}
+          style={heroImageUrl ? { backgroundImage: `url('${heroImageUrl}')` } : undefined}
         >
           <div className="hero__overlay"></div>
           <div className="hero__content">
-            <h1 className="h1 hero__headline">{page.title}</h1>
+            {page.heroHeadline && (
+              <h1 className="h1 hero__headline">{page.heroHeadline}</h1>
+            )}
+            {page.heroSubtitle && (
+              <p className="hero__sub">{page.heroSubtitle}</p>
+            )}
           </div>
         </section>
       )}
 
-      <article className="article-body">
-        <PortableTextRenderer value={page.body} />
-      </article>
+      {/* Sections */}
+      <PageSectionRenderer
+        sections={page.sections}
+        formspreeId={settings?.formspreeId}
+      />
 
-      <Subscribe />
+      {/* Bottom Subscribe */}
+      {page.showSubscribe && <Subscribe formspreeId={settings?.formspreeId} />}
     </>
   );
 }
