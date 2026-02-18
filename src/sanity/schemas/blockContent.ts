@@ -63,10 +63,53 @@ export default {
       ],
     },
     {
+      name: 'localImage',
+      title: 'Local Image',
+      type: 'object',
+      description: 'Reference to an image in /public/images/ (not uploaded to Sanity CDN)',
+      fields: [
+        {
+          name: 'src',
+          title: 'Image Path',
+          type: 'string',
+          description: 'Path relative to /public, e.g. /images/photo.jpg',
+          validation: (Rule: any) => Rule.required(),
+        },
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+        },
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+        },
+      ],
+      preview: {
+        select: { title: 'alt', subtitle: 'src' },
+        prepare({ title, subtitle }: { title: string; subtitle: string }) {
+          return { title: title || 'Image', subtitle };
+        },
+      },
+    },
+    {
       name: 'callout',
       title: 'Callout Box',
       type: 'object',
       fields: [
+        {
+          name: 'number',
+          title: 'Number / Stat',
+          type: 'string',
+          description: 'The big number or stat displayed prominently (e.g. "22 min", "$47k", "146 hrs")',
+        },
+        {
+          name: 'text',
+          title: 'Text',
+          type: 'text',
+          rows: 3,
+        },
         {
           name: 'type',
           title: 'Type',
@@ -80,15 +123,12 @@ export default {
           },
           initialValue: 'info',
         },
-        {
-          name: 'text',
-          title: 'Text',
-          type: 'text',
-          rows: 3,
-        },
       ],
       preview: {
-        select: { title: 'text', subtitle: 'type' },
+        select: { title: 'number', subtitle: 'text' },
+        prepare({ title, subtitle }: { title: string; subtitle: string }) {
+          return { title: title || 'Callout', subtitle };
+        },
       },
     },
     {

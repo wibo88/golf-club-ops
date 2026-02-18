@@ -25,6 +25,7 @@ const components: PortableTextComponents = {
     },
   },
   types: {
+    // Sanity CDN image (uploaded asset)
     image: ({ value }) => {
       if (!value?.asset) return null;
       const imageUrl = urlFor(value).width(1200).quality(80).url();
@@ -55,7 +56,52 @@ const components: PortableTextComponents = {
         </figure>
       );
     },
+
+    // Local image (path to /public/images/)
+    localImage: ({ value }) => {
+      if (!value?.src) return null;
+      return (
+        <figure style={{ margin: 'var(--space-lg) 0' }}>
+          <img
+            src={value.src}
+            alt={value.alt || ''}
+            style={{
+              width: '100%',
+              borderRadius: '8px',
+              objectFit: 'cover',
+              aspectRatio: '16/9',
+            }}
+            loading="lazy"
+          />
+          {value.caption && (
+            <figcaption
+              style={{
+                marginTop: 'var(--space-xs)',
+                fontSize: '0.85rem',
+                opacity: 0.7,
+                textAlign: 'center',
+              }}
+            >
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+
+    // Callout box with optional big number/stat
     callout: ({ value }) => {
+      // If it has a number, render the full callout with number + text
+      if (value.number) {
+        return (
+          <div className="callout">
+            <div className="callout__number">{value.number}</div>
+            <div className="callout__text">{value.text}</div>
+          </div>
+        );
+      }
+
+      // Fallback: simple bordered callout without number
       const typeStyles: Record<string, string> = {
         info: 'var(--bg-blue)',
         warning: 'var(--bg-accent)',
@@ -76,6 +122,8 @@ const components: PortableTextComponents = {
         </div>
       );
     },
+
+    // Pull quote
     pullQuote: ({ value }) => (
       <blockquote
         style={{
